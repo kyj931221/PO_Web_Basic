@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!--1. 배경이 회색이고 텍스트가 하얀 메뉴가 3개 있습니다.-->
+<!--2. 마우스로 메뉴를 클릭하면 한 메뉴만 배경이 하얗게 외곽선은 검게 텍스트는 검게 변합니다 .-->
+<!--3. 다른메뉴를 클릭하면 아까 클릭한 메뉴는 원래대로 돌아오고 클릭한 메뉴가 변화합니다 .-->
+
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>메뉴 선택</title>
+
+  <style>
+    .menu {
+      background-color: gray;
+      color: white;
+      padding: 50px;
+      margin: 5px;
+      line-height: 10px;
+      text-align: center;
+      border: 1px solid transparent;
+    }
+
+    .menu.active {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  </style>
+
+  <script>
+    function selectMenu(clickedMenu) {
+
+      const menus = document.querySelectorAll('.menu');
+      menus.forEach(menu => menu.classList.remove('active'));
+
+      clickedMenu.classList.add('active');
+    }
+  </script>
+
+</head>
+<body>
+
+<!-- 메뉴 목록 -->
+<span class="menu" onclick="selectMenu(this)">html</span>
+<span class="menu" onclick="selectMenu(this)">css</span>
+<span class="menu" onclick="selectMenu(this)">javascript</span>
+
+</body>
+</html>

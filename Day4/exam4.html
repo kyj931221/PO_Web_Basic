@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>텍스트 입력 및 색상 변경</title>
+  <style>
+    /* 텍스트와 버튼 스타일 */
+    #displayText {
+      font-size: 2em;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .colorButton {
+      font-size: 1em;
+      margin: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function displayText() {
+      // 텍스트 입력 받기
+      const userInput = prompt("텍스트를 입력하세요.");
+
+      // 값이 없으면 경고창 띄우고 종료
+      if (!userInput || userInput.trim() === "") {
+        alert("텍스트값을 입력해 주세요.");
+        return;
+      }
+
+      // 텍스트가 있으면 화면 가운데에 표시
+      const displayTextElement = document.getElementById("displayText");
+      displayTextElement.textContent = userInput;
+
+      // 버튼 영역 보이기
+      document.getElementById("buttonContainer").style.display = "block";
+    }
+
+    function changeColor(color, colorName) {
+
+      const displayTextElement = document.getElementById("displayText");
+      displayTextElement.style.color = color;
+      alert(`${colorName} 색으로 변경됩니다.`);
+    }
+  </script>
+</head>
+<body>
+<button onclick="displayText()">텍스트 입력</button>
+
+<div id="displayText"></div>
+
+<div id="buttonContainer" style="text-align: center; display: none;">
+  <button class="colorButton" style="color: red;" onclick="changeColor('red', '빨강')">빨강</button>
+  <button class="colorButton" style="color: blue;" onclick="changeColor('blue', '파랑')">파랑</button>
+  <button class="colorButton" style="color: green;" onclick="changeColor('green', '초록')">초록</button>
+</div>
+</body>
+</html>
