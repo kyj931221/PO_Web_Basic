@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>실습1</title>
+    <script>
+        function askName() {
+            let userName = prompt("이름을 입력하세요.");
+
+            while (userName === null || userName.trim() === "") {
+                userName = prompt("다시 입력해주세요.");
+            }
+
+            alert(`${userName}님 안녕하세요.`);
+        }
+
+        askName();
+    </script>
+</head>
+<body>
+<!--<button onclick="askName()">이름 입력</button>-->
+</body>
+</html>

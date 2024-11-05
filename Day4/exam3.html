@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>숫자 입력 및 조건 확인</title>
+    <script>
+        function checkNumber() {
+            // 사용자로부터 숫자를 입력받음
+            let number = prompt("숫자를 입력하세요.");
+
+            // 숫자인지 확인하고, 숫자가 아니면 경고 메시지 출력
+            while (isNaN(number) || number === null || number.trim() === "") {
+                alert("숫자를 입력해 주세요.");
+                return;
+            }
+
+            // 입력한 값을 숫자로 변환
+            number = parseInt(number);
+
+            // 숫자가 1 이상 100 이하인지 확인
+            while (number < 1 || number > 100) {
+                alert("1 이상 100 이하를 넣어주세요.");
+                return;
+            }
+
+            // 1부터 100까지 차례대로 콘솔에 출력
+            for (let i = 1; i <= number; i++) {
+                console.log(i);
+            }
+
+            // 완료 메시지 출력
+            alert("완료되었습니다.");
+        }
+
+        checkNumber();
+    </script>
+</head>
+<body>
+<!--<button onclick="checkNumber()">숫자 입력</button>-->
+</body>
+</html>
