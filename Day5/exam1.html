@@ -1,0 +1,44 @@
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>메뉴 선택</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+          integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+  <style>
+    .menu {
+      background-color: gray;
+      color: white;
+      padding: 50px;
+      margin: 5px;
+      line-height: 10px;
+      text-align: center;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .menu.active {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function() {
+      $('.menu').click(function() {
+        $('.menu').removeClass('active');  // 모든 메뉴에서 active 클래스 제거
+        $(this).addClass('active');  // 클릭한 메뉴에 active 클래스 추가
+      });
+    });
+  </script>
+
+</head>
+<body>
+
+<!-- 메뉴 목록 -->
+<span class="menu">html</span>
+<span class="menu">css</span>
+<span class="menu">javascript</span>
+
+</body>
+</html>

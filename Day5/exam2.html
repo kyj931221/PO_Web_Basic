@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>텍스트 입력 및 색상 변경</title>
+    <style>
+        /* 텍스트와 버튼 스타일 */
+        #displayText {
+            font-size: 2em;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .colorButton {
+            font-size: 1em;
+            margin: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            // 텍스트 입력 받기
+            $('#displayTextButton').click(function() {
+                const userInput = prompt("텍스트를 입력하세요.");
+
+                // 값이 없으면 경고창 띄우고 종료
+                if (!userInput || userInput.trim() === "") {
+                    alert("텍스트값을 입력해 주세요.");
+                    return;
+                }
+
+                // 텍스트가 있으면 화면 가운데에 표시
+                $('#displayText').text(userInput);
+
+                // 버튼 영역 보이기
+                $('#buttonContainer').show();
+            });
+
+            // 색상 변경
+            $('.colorButton').click(function() {
+                const color = $(this).css('color');
+                const colorName = $(this).text();
+
+                $('#displayText').css('color', color);
+                alert(`${colorName} 색으로 변경됩니다.`);
+            });
+        });
+    </script>
+</head>
+<body>
+<button id="displayTextButton">텍스트 입력</button>
+
+<div id="displayText"></div>
+
+<div id="buttonContainer" style="text-align: center; display: none;">
+    <button class="colorButton" style="color: red;">빨강</button>
+    <button class="colorButton" style="color: blue;">파랑</button>
+    <button class="colorButton" style="color: green;">초록</button>
+</div>
+</body>
+</html>
