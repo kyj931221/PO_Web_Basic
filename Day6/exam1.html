@@ -50,6 +50,12 @@
         const funImage = "assets/Image/butter_fun.gif";
         const shitImage = "assets/Image/butter_shit.gif";
 
+        // 점수 상승 사운드 효과
+        const scoreUpSound = new Audio("assets/audio/yaho.mp4");
+
+        // 점수 하락 사운드 효과
+        const scoreDownSound = new Audio("assets/audio/Angry.mp4");
+
         $(() => {
             initGame();
         });
@@ -68,6 +74,10 @@
         function updateScore(value) {
             score += value;
             $("#score").text("Score: " + score);
+
+            if (value > 0) {
+                scoreUpSound.play();
+            }
         }
 
         function moveLeft() {
@@ -175,12 +185,11 @@
             const item = $(".item");
 
             const playerRect = player[0].getBoundingClientRect();
-            const enemyRect = enemy[0].getBoundingClientRect();
-            const itemRect = item[0].getBoundingClientRect();
+            const enemyRect = enemy[0]?.getBoundingClientRect();
+            const itemRect = item[0]?.getBoundingClientRect();
 
             // 적과 충돌 처리
-            if (
-                playerRect.left < enemyRect.right &&
+            if (enemyRect && playerRect.left < enemyRect.right &&
                 playerRect.right > enemyRect.left &&
                 playerRect.top < enemyRect.bottom &&
                 playerRect.bottom > enemyRect.top
@@ -189,13 +198,13 @@
                 setTimeout(() => {
                     player.css("background-image", `url(${originImage})`);
                 }, 1000);
+                scoreDownSound.play();
                 updateScore(-1); // 점수 감소
                 respawnEnemy();
             }
 
             // 아이템과 충돌 처리
-            if (
-                playerRect.left < itemRect.right &&
+            if (itemRect && playerRect.left < itemRect.right &&
                 playerRect.right > itemRect.left &&
                 playerRect.top < itemRect.bottom &&
                 playerRect.bottom > itemRect.top

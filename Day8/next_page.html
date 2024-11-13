@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+        const age = params.get("age");
+
+        $(()=>{
+            $("body").append(`${name}`)
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>
